@@ -87,7 +87,8 @@ Similar approach to KNN but with decision trees; GridSearch was not used for `n_
 - **Mean Absolute Error (MAE):** Average absolute prediction error.  
  
 ## Results and Key Findings  
- 
+
+### Lasso (all features)
 | MSE Train | MSE Test | MAE Train | MAE Test | R² Train | R² Test |  
 |-----------|---------|----------|---------|--------|-------|  
 | 1.73E+09 | 1.53E+09 | 23696.70 | 22592.99 | 0.5172 | 0.4881 |  
