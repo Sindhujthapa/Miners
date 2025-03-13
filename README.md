@@ -39,11 +39,14 @@ The data lacks details like precise locations (latitude/longitude) and specific 
 ### Modeling Approaches  
 - **Exploratory Plots:** No clear seasonal patterns initially observed.  
 
-**INCLUDE PLOTS**
+![1](readme_plots/days of weeks.png)
+![2](readme_plots/observations per day.png)
 
 - **Decomposition:** Weekly seasonality found in both cities.  
 
-**INCLUDE PLOTS**
+![3](readme_plots/h_decomposition.png)
+![4](readme_plots/c_decomposition.png)
+
 
 - **ADF Test:** Confirmed stationarity for Chennai; differencing required for Hyderabad.  
 
@@ -76,7 +79,8 @@ As mentioned, we observed seasonality after decomposition and wanted to include 
 - **Chennai:** SARIMA(1,0,2,0,0,1,7) , AIC: 1392
 
 We conducted the Ljung-Box and ARCH tests, confirming no autocorrelation or heteroscedasticity in the residuals. For forecasting, we selected SARIMA(1,1,2,0,0,1,7) for Hyderabad and SARIMA(1,0,2,0,0,1,7) for Chennai.
-
+![5](readme_plots/h1.png)
+![6](readme_plots/c1.png)
 
 ### Model Performance  
 
@@ -89,10 +93,25 @@ These plots show forecasted values 10 periods ahead for each of the regions. As 
   
 In time series modeling, we used a sequential train-test split, with the last 10 observations as the test set and the rest as training. Given our limited data (around 70 observations per city), the predictions were suboptimal, likely due to the small sample size.
 
+Hyderabad 
+![7](readme_plots/h2.png)
+Chennai
+![8](readme_plots/c2.png)
+
 **Rolling Forecasting:** 
 To improve model performance, we used a rolling train-test scheme, where the training set expands with each new observation. Based on MAE and MSE, this approach performed better for Hyderabad but worse for Chennai. While the model captured some real data fluctuations, predictions were not perfect.
 
-#### Limitations  
+| Region | MAE | MSE |  
+|--------|------|------|  
+| Hyderabad | 7709.93 | 116,800,466 |  
+| Chennai | 8342.6 | 90,204,823 |  
+
+Hyderabad 
+![9](readme_plots/h3.png)
+Chennai
+![10](readme_plots/c3.png)
+
+#### Limitations of the model 
 -   The model cannot capture all fluctuations and is limited to short-term predictions due to a lack of data.
 -   ARIMA and SARIMA only model data based on past observations, requiring other models for additional variables.
 -   These models assume stationarity, forcing data transformations that may reduce model flexibility.
