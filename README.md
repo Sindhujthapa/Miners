@@ -251,6 +251,13 @@ Machine learning models were developed to predict rental prices, aiding tenants 
 
 ## Appendix
 
+0. Please ensure you have these versions, as other versions (particularly those from sklearn) may produce different results from ours.
+- pandas: 2.2.3
+- scikit-learn: 1.6.1
+- numpy: 2.2.3
+- statsmodels: 0.14.4
+- beautifulsoup4: 4.13.3
+
 1.  Clone the repository
     
 2.  Install the required dependencies using [requirements.txt](requirements.txt)
