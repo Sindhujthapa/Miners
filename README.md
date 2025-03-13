@@ -41,6 +41,8 @@ This dataset has missing values, especially in categorical features, as noted in
 -   The dataset was cleaned and preprocessed to address missing values, outliers, and categorical variables, including creating dummy variables for features like "overlooking" values, floor breakdowns, and rental start/end dates, along with calculating the distance from the city center.
    
 -   The most significant change was removing outlier rent prices by dropping the 1st and 99th percentiles, which removed ~100 observations and improved model predictive power. A graphical representation is available in the cleaner.py file.
+
+![boxplot](readme_plots/Price_distribution_across_city.png)
  
 ### Limitations  
 - Missing bedroom count.  
