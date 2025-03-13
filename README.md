@@ -154,8 +154,8 @@ The data lacks details like precise locations (latitude/longitude) and specific 
 ### Modeling Approaches  
 - **Exploratory Plots:** No clear seasonal patterns initially observed.  
 
-![1](readme_plots/days of weeks.png)
-![2](readme_plots/observations per day.png)
+![1](readme_plots/daysofweeks.png)
+![2](readme_plots/observationsperday.png)
 
 - **Decomposition:** Weekly seasonality found in both cities.  
 
