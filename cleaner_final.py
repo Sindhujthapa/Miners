@@ -4,12 +4,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-# Load the dataset
 df = pd.read_csv("properties_info_updated.csv")
 df = df[~df['Floor'].isin(['1', '4'])]
 
-# Dummy variables for Overlooking: For parsimony, is better to only have 3 instead of 9 variables
-# (all the possible combinations of Garden/Park, Pool, and Main Road)
 df_dummies = df['Overlooking'].str.split(', ')
 df_exploded = df_dummies.explode()
 df_encoded = pd.get_dummies(df_exploded)
@@ -24,17 +21,14 @@ df['Floor'] = df['Floor'].str.replace('Lower Basement', '-2')
 # Assign '0 out of 1' to single-family residences with missing Floor values
 df['Floor'] = df.apply(lambda row: '0 out of 1' if row['Property Type'] == 'SingleFamilyResidence' and pd.isnull(row['Floor']) else row['Floor'], axis=1)
 
-# Extract floor number and total floors
 df[['Floor Number', 'Total Floors']] = df['Floor'].str.extract(r'(-?\d+) out of (\d+)')
 
 df['Floor Number'] = pd.to_numeric(df['Floor Number'])
 df['Total Floors'] = pd.to_numeric(df['Total Floors'])
 
-# Convert the rental date columns to datetime format
 df["Rental Start Time"] = pd.to_datetime(df["Rental Start Time"], errors='coerce')
 df["Rental End Time"] = pd.to_datetime(df["Rental End Time"], errors='coerce')
 
-# Extract year, month, and day into separate columns
 df["Rental Start Year"] = df["Rental Start Time"].dt.year
 df["Rental Start Month"] = df["Rental Start Time"].dt.month
 df["Rental Start Day"] = df["Rental Start Time"].dt.day
@@ -43,7 +37,6 @@ df["Rental End Year"] = df["Rental End Time"].dt.year
 df["Rental End Month"] = df["Rental End Time"].dt.month
 df["Rental End Day"] = df["Rental End Time"].dt.day
 
-# Clean and convert 'Area' column to numeric
 df['Area'] = df['Area'].str.replace(',', '', regex=True)
 
 # Extract numeric values and convert to float
@@ -60,22 +53,16 @@ conversion_factors = {
     'sqft': 1  # No conversion needed
 }
 
-# Convert all areas to sqft
 df['Area in sqft'] = df.apply(lambda row: row['Area Value'] * conversion_factors.get(row['Area Unit'], np.nan), axis=1)
 
-# Drop unnecessary columns
 df.drop(columns=['Area', 'Area Value', 'Area Unit'], inplace=True)
 
-# Rename the standardized column
 df.rename(columns={'Area in sqft': 'Area'}, inplace=True)
 
-# Remove rows with missing 'Price' values
 df = df.dropna(subset=['Price'])
 
-# Drop irrelevant columns
 df = df.drop(['Address Locality', 'Address Country', 'Currency'], axis=1)
 
-# Dummy for missing floors (for interaction variables)
 df['Floor_present'] = df['Floor'].notna().astype(int)
 
 initial = len(df)
@@ -98,14 +85,12 @@ plt.show()
 lower_bound = df["Price"].quantile(0.01)
 upper_bound = df["Price"].quantile(0.99)
 
-# Filter the DataFrame to keep rows within the specified price range
+
 df = df[(df["Price"] >= lower_bound) & (df["Price"] <= upper_bound)]
 
 print('Final Dataset length:', len(df))
 print('Dropping price outliers changed df by:', initial - len(df))
 
-# Now the plot is much more readable.
-#This step was done after running the models, and it made the prediction errors much smaller.
 
 plt.figure(figsize=(12, 6))  
 sns.boxplot(x="Address Region", y="Price", data=df)
@@ -119,8 +104,6 @@ plt.tight_layout()
 
 plt.show()
 
-# Count the number of observations that have Balcony and Bathrooms encoded as >10
-# Since they have a low number of observations, we are just going to drop these observations.
 df.value_counts('Balcony')
 
 df.value_counts('Bathroom')
@@ -144,12 +127,12 @@ month_mapping = {
     "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
 }
 
-# Function to compute "Days Until Available" using Rental Start Year/Month as the reference point
+
 def compute_months_until_available(row):
     availability = row["Availability"]  # Remove quotation marks
 
     if availability == "Immediately":
-        return 0  # Already available
+        return 0  
 
     try:
         parts = availability.split()
@@ -162,7 +145,7 @@ def compute_months_until_available(row):
        
         return (year_diff * 12) + month_diff
     except:
-        return None  # Handle unexpected cases
+        return None  
 
 df["Months Until Available"] = df.apply(compute_months_until_available, axis=1)
 
@@ -180,7 +163,7 @@ city_centers = {
 df["City_Center_Latitude"] = df["Address Region"].map(lambda x: city_centers.get(x, (None, None))[0])
 df["City_Center_Longitude"] = df["Address Region"].map(lambda x: city_centers.get(x, (None, None))[1])
 
-# Approximate Euclidean distance in kilometers (this is not our original code, we asked for help)
+
 df["Distance_to_City_Center"] = np.sqrt(
     ((df["Latitude"] - df["City_Center_Latitude"]) * 111) ** 2 +
     ((df["Longitude"] - df["City_Center_Longitude"]) * 111 * np.cos(np.radians(df["Latitude"]))) ** 2)
@@ -190,5 +173,5 @@ print(missing_counts)
 
 print(len(df))
 
-# Save the cleaned dataset
+
 df.to_csv("cleaned_properties_final.csv", index=False)
