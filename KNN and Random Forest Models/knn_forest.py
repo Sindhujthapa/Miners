@@ -10,7 +10,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import FunctionTransformer
 
 # Initialize dictionaries to store results
 aggregate_results = {
