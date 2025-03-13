@@ -77,3 +77,20 @@ As mentioned, we observed seasonality after decomposition and wanted to include 
 
 We conducted the Ljung-Box and ARCH tests, confirming no autocorrelation or heteroscedasticity in the residuals. For forecasting, we selected SARIMA(1,1,2,0,0,1,7) for Hyderabad and SARIMA(1,0,2,0,0,1,7) for Chennai.
 
+
+### Model Performance  
+
+These plots show forecasted values 10 periods ahead for each of the regions. As is typical with these types of models, the predictions closely follow the mean of the series (which happens because our models assume stationarity).  
+
+| Region | MAE | MSE |  
+|--------|------|------|  
+| Hyderabad | 8995.99 | 138,888,235 |  
+| Chennai | 7716.65 | 80,176,964 |  
+  
+In time series modeling, we used a sequential train-test split, with the last 10 observations as the test set and the rest as training. Given our limited data (around 70 observations per city), the predictions were suboptimal, likely due to the small sample size.
+
+**Rolling Forecasting:** 
+To improve model performance, we used a rolling train-test scheme, where the training set expands with each new observation. Based on MAE and MSE, this approach performed better for Hyderabad but worse for Chennai. While the model captured some real data fluctuations, predictions were not perfect.
+  
+
+
