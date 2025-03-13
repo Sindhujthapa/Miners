@@ -1,6 +1,6 @@
 # Miners
 
-Predicting Rent Prices Using Machine Learning Models
+# Predicting Rent Prices Using Machine Learning Models
 
 ## Team Members - Nilay, Mariia, Vasco, Sindhuj
 
@@ -34,6 +34,96 @@ This dataset has missing values, especially in categorical features, as noted in
 - **Rental Start/End Time:** Lease period.  
 - **Price:** Monthly rental price.  
 - **Area:** Square footage of the property.
+
+### Data Cleaning & Preprocessing  
+-   The dataset has 6106 listings with varied property types; median rental prices are highest in metropolitan areas, with a 1,311 sq. ft. average property size. Furnished units have a premium, and missing amenities were imputed, while outliers were handled with robust methods.
+   
+-   The dataset was cleaned and preprocessed to address missing values, outliers, and categorical variables, including creating dummy variables for features like "overlooking" values, floor breakdowns, and rental start/end dates, along with calculating the distance from the city center.
+   
+-   The most significant change was removing outlier rent prices by dropping the 1st and 99th percentiles, which removed ~100 observations and improved model predictive power. A graphical representation is available in the cleaner.py file.
+ 
+### Limitations  
+- Missing bedroom count.  
+- Limited number of cities.  
+- Unclear price distribution.  
+- Multiple outliers in features.  
+- Difficulty incorporating coordinates.  
+- Cities may have multiple centers, but only one was considered.  
+- Lack of socioeconomic features like crime rates.  
+ 
+## Methodology  
+ 
+### 1. Exploratory Data Analysis (EDA)  
+- Analyzed rental price distributions.  
+- Identified feature correlations.  
+- Visualized price variations across cities.  
+ 
+### 2. Model Design  
+#### a. City-wise Analysis  
+Models were trained separately for each city to account for regional differences.  
+ 
+#### b. Feature Scaling  
+The numerical features were scaled using StandardScaler to ensure that all features had the same scale, as many of our models are sensitive to the scale of the input features.
+ 
+#### c. Hyperparameter Tuning  
+GridSearchCV was used to optimize:  
+- **Lasso Regression:** Regularization strength (alpha).  
+- **KNN:** Optimal number of neighbors (k).  
+ 
+## Models  
+ 
+### a. Linear Regression (Lasso)  
+We used Lasso Regression, which includes L1 regularization, to predict rental prices based on features like Bathroom, Balcony, Floor Number, Area, and categorical attributes. Lasso was chosen for its ability to perform regularization and feature selection, improving model performance and interpretability.
+ 
+### b. K-Nearest Neighbors (KNN)  
+We used the K-nearest neighbors (KNN) model to predict rental prices by considering all feature variables and finding nearest neighbors. We tested the model with geographical location, categorical features, numerical features, and combinations. The KNN model for geographical location was run per region. We standardized categorical and numerical variables separately using ColumnTransformer.
+ 
+### c. Random Forest  
+Similar approach to KNN but with decision trees; GridSearch was not used for `n_estimators` due to runtime constraints.  
+ 
+## Model Evaluation Metrics  
+- **R-squared (R²):** Variance explained by the model. Used only for the regression.
+- **Mean Squared Error (MSE):** Average squared prediction error.  
+- **Mean Absolute Error (MAE):** Average absolute prediction error.  
+ 
+## Results and Key Findings  
+ 
+| MSE Train | MSE Test | MAE Train | MAE Test | R² Train | R² Test |  
+|-----------|---------|----------|---------|--------|-------|  
+| 1.73E+09 | 1.53E+09 | 23696.70 | 22592.99 | 0.5172 | 0.4881 |  
+ 
+  Lasso Regression had high test/train MSE and MAE but provided the best estimates. Log transformation worsened errors, so it was discarded. Performance varied by city: Bangalore and Hyderabad showed the best results, while Mumbai had high errors but explained much variance. Chennai and Kolkata struggled, with Kolkata showing poor predictive power. New Delhi's extreme test MSE and negative R² indicated model failure. Overall, city-specific tuning or alternative approaches are needed.
+ 
+### KNN  (all features)
+| MSE Test | MAE Test | Optimal K |  
+|---------|---------|---------|  
+| 2.14E+09 | 24415.28 | 15 |  
+ 
+KNN performed the weakest due to the complexity of the data and dummy variables. The optimal K was 15, requiring many neighbors for weak estimates. Using only geographical features didn’t reduce MSE as expected. Kolkata and Hyderabad performed slightly better individually.
+
+### Random Forest  (all features)
+| MSE Test | MAE Test |  
+|---------|---------|  
+| 1.06E+09 | 16590.7 |  
+
+Random Forest had the lowest MSE of 1.06 billion, but the error was still high. Hyderabad and Kolkata were the best-performing cities. The model improved with more features, suggesting better results could be achieved with more data.  
+
+#### Model Limitations  
+-   High MSE estimates suggest the models may not be complex enough to capture all the data variability and nuances.
+-   KNN and Random Forest had too many features, potentially leading to conflicting estimates or overfitting.
+-   Both models are sensitive to outliers; removing the 1st and 99th percentiles significantly improved MSE and MAE.
+-   Categorical variables limit the number of optimal splits in Random Forest and reduce distance calculations in KNN.
+-   With many features, the models may inefficiently split train and test data, possibly missing test data patterns.
+-   Missing values are imputed for numerical variables, and categorical variables are assigned an "unknown" category, but this prevents proper inference.
+ 
+#### Possible Extensions  
+- Expanding to more cities.  
+- Deploying the model as a rental pricing tool.  
+- Incorporating additional socioeconomic indicators.  
+- Clustering on latitude/longitude data.  
+- Using more advanced ML models like ElasticNet or GradientBoosting.
+
+
 ## Time Series Analysis  
   
 ### Data Sources  
