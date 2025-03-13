@@ -2,13 +2,38 @@
 
 Predicting Rent Prices Using Machine Learning Models
 
-Team Members - Nilay, Mariia, Vasco, Sindhuj
-Problem Statement
-Understanding rental price trends is crucial for tenants, landlords, and real estate investors. Our project aims to build predictive models that estimate rental prices based on various factors, such as location, property size, number of rooms, amenities, and prices from previous periods. We aim to provide insights into the key drivers of rental costs and improve pricing transparency in the real estate market by using different but complementary approaches.
-In our first approach, we will use the features of each listed property to estimate rental prices. This approach is a 'cross-sectional' analysis of the data.
-In the second approach, we use a different dataset that covers a longer time frame than the one used in the first approach. We will calculate the average daily prices for two regions and attempt to predict and forecast future rental prices. This second part is a 'time-series' analysis of the data.
+## Team Members - Nilay, Mariia, Vasco, Sindhuj
 
+## Problem Statement  
+Understanding rental price trends is crucial for tenants, landlords, and real estate investors. Our project aims to build predictive models that estimate rental prices based on various factors, such as location, property size, number of rooms, amenities, and prices from previous periods.  We aim to provide insights into the key drivers of rental costs and improve pricing transparency in the real estate market by using different but complementary approaches.
+ 
+- **First approach:** A 'cross-sectional' analysis using features of each listed property to estimate rental prices.  
+- **Second approach:** A 'time-series' analysis covering a longer timeframe, calculating average daily prices for two regions to forecast future rental prices.
 
+## Cross-Sectional Models  
+ 
+### Data Sources and Collection Method  
+Data was scraped from the MagicBricks website for six cities: Bangalore, Hyderabad, Mumbai, New Delhi, Kolkata, and Chennai. Due to website limitations, the HTML had to be copied into `.txt` files before further processing.  
+
+This dataset has missing values, especially in categorical features, as noted in the missing.py file. No clear patterns are found, but two features have over 2,500 missing values. We will treat missing values in categorical variables as a separate category in our models.
+ 
+### Columns/Features  
+- **Property ID:** Unique identifier for each listing.  
+- **Furnishing:** Categorical variable describing furnishing extent.  
+- **Bathroom:** Number of bathrooms.  
+- **Tenant Preference:** Preferred tenant type.  
+- **Availability:** Acceptable move-in dates.  
+- **Floors:** Floor number and total floors in the property.  
+- **Facing:** Direction property faces.  
+- **Overlooking:** View the property offers.  
+- **Balcony:** Number of balconies.  
+- **Ownership:** Ownership type.  
+- **Property Type:** Apartment or house.  
+- **Latitude and Longitude:** Coordinates.  
+- **Address Region:** City location.  
+- **Rental Start/End Time:** Lease period.  
+- **Price:** Monthly rental price.  
+- **Area:** Square footage of the property.
 ## Time Series Analysis  
   
 ### Data Sources  
