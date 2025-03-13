@@ -268,7 +268,7 @@ Machine learning models were developed to predict rental prices, aiding tenants 
     
 5.  Run the code in the file [Lasso_LinearReegression.py](LinearRegression/Lasso_LinearRegression.py) for LASSO Regression models
     
-6.  Run the code in the file [knn_forest.py]('KNN and Random Forest Models'/knn_forest.py) for KNN and RANDOM FOREST Regression models
+6.  Run the code in the file [knn_forest_final.py](KNN and Random Forest Models/knn_forest_final.py) for KNN and RANDOM FOREST Regression models
 
 For convenience, we included the final dataset created after scraping and cleaning the data in each model's folder.
     
