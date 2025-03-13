@@ -91,6 +91,16 @@ In time series modeling, we used a sequential train-test split, with the last 10
 
 **Rolling Forecasting:** 
 To improve model performance, we used a rolling train-test scheme, where the training set expands with each new observation. Based on MAE and MSE, this approach performed better for Hyderabad but worse for Chennai. While the model captured some real data fluctuations, predictions were not perfect.
+
+#### Limitations  
+-   The model cannot capture all fluctuations and is limited to short-term predictions due to a lack of data.
+-   ARIMA and SARIMA only model data based on past observations, requiring other models for additional variables.
+-   These models assume stationarity, forcing data transformations that may reduce model flexibility.
+  
+### Extensions  
+- Consider adding **economic indicators** like **unemployment rate** or **interest rates** as exogenous variables. These factors influence property prices and can enhance prediction accuracy when included in a **SARIMAX** model. 
+-   Scrape more data for additional days to increase the sample size and enhance the model’s predictive power.
+-   With more data, higher-order parameters for the ARIMA and SARIMA models could be used, as the limited 70+ observations restricted us to 3 or fewer parameters for the MA and AR parts.
   
 
 
