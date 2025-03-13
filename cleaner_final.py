@@ -136,10 +136,9 @@ def compute_months_until_available(row):
 
     try:
         parts = availability.split()
-        avail_month = month_mapping[parts[1][:3]]  # Convert "Apr" to 4, "May" to 5, etc.
-        avail_year = int("20" + parts[2].strip("'"))  # Convert "25" to 2025, "26" to 2026, etc.
-
-        # Compute months difference
+        avail_month = month_mapping[parts[1][:3]]  
+        avail_year = int("20" + parts[2].strip("'"))  
+        
         year_diff = avail_year - row["Rental Start Year"]
         month_diff = avail_month - row["Rental Start Month"]
        
