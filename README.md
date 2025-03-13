@@ -102,5 +102,32 @@ To improve model performance, we used a rolling train-test scheme, where the tra
 -   Scrape more data for additional days to increase the sample size and enhance the model’s predictive power.
 -   With more data, higher-order parameters for the ARIMA and SARIMA models could be used, as the limited 70+ observations restricted us to 3 or fewer parameters for the MA and AR parts.
   
+## Reproducibility  
+- Code and datasets are available in a public GitHub repository.  
+- README includes setup instructions.  
+- All preprocessing steps are documented.  
+- Required packages listed in `requirements.txt`.  
+  
+## Conclusion  
+Machine learning models were developed to predict rental prices, aiding tenants and landlords. Future improvements include real-time data updates and enhanced predictive features.
 
+## Appendix
+
+1.  Clone the repository
+    
+2.  Install the required dependencies using requirements.txt
+    
+3.  Run the code in the file scraper.py to collect the cross-sectional data from the necessary HTML files
+    
+4.  Run the code in the file cleaner.py to clean and convert variables into the desired format for cross-sectional models
+    
+5.  Run the code in the file lasso.py for LASSO Regression models
+    
+6.  Run the code in the file knn_tree.py for KNN and RANDOM FOREST Regression models
+    
+7.  Run the code in the file timeseriesanalysis.py to check plots for obvious seasonal patterns
+    
+8.  Run the code in the file chennaitimeseries.py for modeling specific to Chennai
+    
+9.  Run the code in the file hyderabadtimeseries.py for modeling specific to Hyderabad
 
