@@ -69,4 +69,11 @@ We evaluated several ARIMA models using AIC and BIC, expecting at least one AR a
 | (1, 1, 1)  | 1532.461179 | (0, 0, 2)  | 1593.244788 |
 | (2, 1, 1)  | 1532.482322 | (2, 0, 0)  | 1593.393681 |
 
+### Modeling SARIMA 
+As mentioned, we observed seasonality after decomposition and wanted to include it in our model. We chose SARIMA (Seasonal ARIMA) with a seasonal component of 7 (7 days). Our goal was to see if this improved the model in terms of AIC, and it did. The best models we identified were:
+
+- **Hyderabad:** SARIMA(1,1,2,0,0,1,7), AIC: 1320
+- **Chennai:** SARIMA(1,0,2,0,0,1,7) , AIC: 1392
+
+We conducted the Ljung-Box and ARCH tests, confirming no autocorrelation or heteroscedasticity in the residuals. For forecasting, we selected SARIMA(1,1,2,0,0,1,7) for Hyderabad and SARIMA(1,0,2,0,0,1,7) for Chennai.
 
