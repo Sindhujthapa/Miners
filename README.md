@@ -53,3 +53,20 @@ The data lacks details like precise locations (latitude/longitude) and specific 
 | Chennai    | -8.34               | 3.25e-13              | Stationary     |
 | 1st Diff (Hyderabad) | -6.38       | 2.2269532e-08                | Stationary     |
 
+- **ACF & PACF:** 
+
+We created plots to visually identify model parameters and considered ARIMA due to noticeable lags in both AR and MA models. Multiple ARIMA model versions were estimated for a more rigorous approach.
+  
+### Modeling ARIMA 
+
+We evaluated several ARIMA models using AIC and BIC, expecting at least one AR and one MA component (with differencing for Hyderabad and no differencing for Chennai). ARIMA (1, 1, 2) was the best model for Hyderabad, and ARIMA (0, 0, 0) was the best for Chennai based on both rankings. 
+| **Hyderabad**|            |**Chennai**|            |
+|------------|------------|------------|------------|
+| Order      | AIC        | Order      | AIC        |
+| (1, 1, 2)  | 1526.168442 | (0, 0, 0)  | 1589.923826 |
+| (0, 1, 2)  | 1530.206146 | (1, 0, 0)  | 1591.689138 |
+| (0, 1, 1)  | 1534.434114 | (0, 0, 1)  | 1591.703274 |
+| (1, 1, 1)  | 1532.461179 | (0, 0, 2)  | 1593.244788 |
+| (2, 1, 1)  | 1532.482322 | (2, 0, 0)  | 1593.393681 |
+
+
