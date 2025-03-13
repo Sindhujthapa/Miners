@@ -96,16 +96,16 @@ Similar approach to KNN but with decision trees; GridSearch was not used for `n_
   Lasso Regression had high test/train MSE and MAE but provided the best estimates. Log transformation worsened errors, so it was discarded. Performance varied by city: Bangalore and Hyderabad showed the best results, while Mumbai had high errors but explained much variance. Chennai and Kolkata struggled, with Kolkata showing poor predictive power. New Delhi's extreme test MSE and negative R² indicated model failure. Overall, city-specific tuning or alternative approaches are needed.
  
 ### KNN  (all features)
-| MSE Test | MAE Test | Optimal K |  
-|---------|---------|---------|  
-| 2.14E+09 | 24415.28 | 15 |  
+| MSE Test | MAE Test | MAE Train | Optimal K |  
+|---------|---------|---------|---------|  
+| 2.14E+09 | 24415.28 | 22977.9 | 15 |  
  
 KNN performed the weakest due to the complexity of the data and dummy variables. The optimal K was 15, requiring many neighbors for weak estimates. Using only geographical features didn’t reduce MSE as expected. Kolkata and Hyderabad performed slightly better individually.
 
 ### Random Forest  (all features)
-| MSE Test | MAE Test |  
-|---------|---------|  
-| 1.06E+09 | 16590.7 |  
+| MSE Test | MAE Test | MAE Train |  
+|---------|---------|---------|  
+| 1.06E+09 | 16590.7 | 6064.56 |  
 
 Random Forest had the lowest MSE of 1.06 billion, but the error was still high. Hyderabad and Kolkata were the best-performing cities. The model improved with more features, suggesting better results could be achieved with more data.  
 
@@ -269,11 +269,11 @@ For convenience, we included the final dataset created after scraping and cleani
     
 9.  Run the code in the file [Hyderabad_timeseries.ipynb](TimeSeries/Hyderabad_timeseries.ipynb) for modeling specific to Hyderabad
 
-Lasso Results (individual cities):
+Lasso Results- individual cities:
 ![plot1](readme_plots/app1.png)
 
-KNN and Random Forest results (all regions)
+KNN and Random Forest results- all regions (Only test information):
 ![plot2](readme_plots/app2.png)
 
-KNN and Random Forest results (individual cities)
+KNN and Random Forest results- individual cities (Only test information):
 ![plot3](readme_plots/app3.png)
