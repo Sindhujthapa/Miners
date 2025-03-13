@@ -14,3 +14,15 @@ In the second approach, we use a different dataset that covers a longer time fra
 ### Data Sources  
 - Data [from Kaggle](https://www.kaggle.com/datasets/iamsouravbanerjee/house-rent-prediction-dataset?resource=download&select=House_Rent_Dataset.csv), scraped from MagicBricks.  
 - Complete dataset (no missing values). 
+
+### Features  
+- **BHK:** Number of bedrooms/halls/kitchens.  
+- **Rent:** Monthly rent.  
+- **Size:** Square footage.  
+- **Floor:** Floor number.  
+- **Area Type/Locality:** Description of location.  
+- **City:** City where property is located.  
+- **Furnishing Status:** Furnished, semi-furnished, or unfurnished.  
+- **Tenant Preferred:** Owner’s preference.  
+- **Bathroom:** Number of bathrooms.  
+- **Point of Contact:** Who to contact. 
