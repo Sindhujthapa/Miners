@@ -251,22 +251,29 @@ Machine learning models were developed to predict rental prices, aiding tenants 
 
 1.  Clone the repository
     
-2.  Install the required dependencies using requirements.txt
+2.  Install the required dependencies using [requirements.txt](requirements.txt)
     
-3.  Run the code in the file scraper.py to collect the cross-sectional data from the necessary HTML files
+3.  Run the code in the file [scraper_final.py](Scraper_Cleaner/scraper_final.py) to collect the cross-sectional data from the necessary HTML files
     
-4.  Run the code in the file cleaner.py to clean and convert variables into the desired format for cross-sectional models
+4.  Run the code in the file [cleaner_final.py](Scraper_Cleaner/cleaner_final.py) to clean and convert variables into the desired format for cross-sectional models
     
-5.  Run the code in the file lasso.py for LASSO Regression models
+5.  Run the code in the file [Lasso_LinearReegression.py](LinearRegression/Lasso_LinearRegression.py) for LASSO Regression models
     
-6.  Run the code in the file knn_tree.py for KNN and RANDOM FOREST Regression models
-    
-7.  Run the code in the file timeseriesanalysis.py to check plots for obvious seasonal patterns
-    
-8.  Run the code in the file chennaitimeseries.py for modeling specific to Chennai
-    
-9.  Run the code in the file hyderabadtimeseries.py for modeling specific to Hyderabad
+6.  Run the code in the file [knn_forest.py]('KNN and Random Forest Models'/knn_forest.py) for KNN and RANDOM FOREST Regression models
 
+For convenience, we included the final dataset created after scraping and cleaning the data in each model's folder.
+    
+7.  Run the code in the files [Chennai_Plots.py](TimeSeries/Chennai_Plots.py) and [Hyderabad_Plots.py](TimeSeries/Hyderabad_Plots.py) to check plots for obvious seasonal patterns
+    
+8.  Run the code in the file [Chennai_timeseries.ipynb](TimeSeries/Chennai_timeseries.ipynb) for modeling specific to Chennai
+    
+9.  Run the code in the file [Hyderabad_timeseries.ipynb](TimeSeries/Hyderabad_timeseries.ipynb) for modeling specific to Hyderabad
+
+Lasso Results (individual cities):
 ![plot1](readme_plots/app1.png)
+
+KNN and Random Forest results (all regions)
 ![plot2](readme_plots/app2.png)
+
+KNN and Random Forest results (individual cities)
 ![plot3](readme_plots/app3.png)
