@@ -154,8 +154,9 @@ The data lacks details like precise locations (latitude/longitude) and specific 
 
 ### Modeling Approaches  
 - **Exploratory Plots:** No clear seasonal patterns initially observed.  
-
+Hyderabad
 ![1](readme_plots/daysofweeks.png)
+Chennai
 ![2](readme_plots/observationsperday.png)
 
 - **Decomposition:** Weekly seasonality found in both cities.  
