@@ -467,7 +467,7 @@ for region in regions:
     grid_search_knn_all = GridSearchCV(knn_all_pipeline, param_grid_knn, scoring='neg_mean_absolute_error', n_jobs=-1)
 
  
-    grid_search_knn_all.fit(X_train_all, y_train_all))
+    grid_search_knn_all.fit(X_train_all, y_train_all)
     best_knn_all = grid_search_knn_all.best_estimator_
 
     knn_pred_all = best_knn_all.predict(X_test_all)
