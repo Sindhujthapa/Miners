@@ -28,3 +28,10 @@ In the second approach, we use a different dataset that covers a longer time fra
 - **Point of Contact:** Who to contact.
 
 The data lacks details like precise locations (latitude/longitude) and specific bedroom counts (only total BHK is available). While not critical for model estimation, including time-varying and regional variables (e.g., building age, population growth, crime rates) could have improved predictive power.
+
+### Limitations  
+1.  Chennai and Hyderabad have only 74-75 observations, limiting predictions to short-term trends.
+2.  Predictions can’t cover the entire country due to regional trends and missing data for some cities.
+3.  Varying observation counts across cities restrict the analysis to only the two cities with the most data.
+4.  Static variables, like apartment size or bedroom count, cannot be included in the time-based analysis.
+5.  Missing data on time-varying features and regional factors limits model accuracy and predictive power.
