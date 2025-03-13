@@ -132,3 +132,5 @@ Machine learning models were developed to predict rental prices, aiding tenants 
 9.  Run the code in the file hyderabadtimeseries.py for modeling specific to Hyderabad
 
 ![plot1](readme_plots/app1.png)
+![plot2](readme_plots/app2.png)
+![plot3](readme_plots/app3.png)
