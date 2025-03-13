@@ -35,3 +35,21 @@ The data lacks details like precise locations (latitude/longitude) and specific 
 3.  Varying observation counts across cities restrict the analysis to only the two cities with the most data.
 4.  Static variables, like apartment size or bedroom count, cannot be included in the time-based analysis.
 5.  Missing data on time-varying features and regional factors limits model accuracy and predictive power.
+
+### Modeling Approaches  
+- **Exploratory Plots:** No clear seasonal patterns initially observed.  
+
+**INCLUDE PLOTS**
+
+- **Decomposition:** Weekly seasonality found in both cities.  
+
+**INCLUDE PLOTS**
+
+- **ADF Test:** Confirmed stationarity for Chennai; differencing required for Hyderabad.  
+
+| City       | ADF Statistic       | p-value               | Stationarity   |
+|------------|---------------------|-----------------------|----------------|
+| Hyderabad  | -0.69               | 0.85                  | Non-stationary |
+| Chennai    | -8.34               | 3.25e-13              | Stationary     |
+| 1st Diff (Hyderabad) | -6.38       | 2.2269532e-08                | Stationary     |
+
