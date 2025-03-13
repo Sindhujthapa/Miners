@@ -25,4 +25,6 @@ In the second approach, we use a different dataset that covers a longer time fra
 - **Furnishing Status:** Furnished, semi-furnished, or unfurnished.  
 - **Tenant Preferred:** Owner’s preference.  
 - **Bathroom:** Number of bathrooms.  
-- **Point of Contact:** Who to contact. 
+- **Point of Contact:** Who to contact.
+
+The data lacks details like precise locations (latitude/longitude) and specific bedroom counts (only total BHK is available). While not critical for model estimation, including time-varying and regional variables (e.g., building age, population growth, crime rates) could have improved predictive power.
