@@ -4,10 +4,8 @@ from bs4 import BeautifulSoup
 import os
 import pandas as pd
 
-# List of cities that correspond to the HTML files
 cities = ["bangalore", "chennai", "hyderabad", "kolkata", "mumbai", "newdelhi"]
 
-# Create or open the CSV file for writing the results
 with open("properties_info.csv", "w", newline="", encoding="utf-8") as csvfile:
     # Define the CSV writer and the header row
     fieldnames = [
@@ -23,7 +21,7 @@ with open("properties_info.csv", "w", newline="", encoding="utf-8") as csvfile:
     for city in cities:
         html_file = f"housing{city}.html"
        
-        # Check if the HTML file exists
+        # Check if the HTML file 
         if os.path.exists(html_file):
             with open(html_file, "r", encoding="utf-8") as file:
                 soup = BeautifulSoup(file, "html.parser")
@@ -57,13 +55,12 @@ with open("properties_info.csv", "w", newline="", encoding="utf-8") as csvfile:
                 "Currency": ""  # New Currency field
             }
 
-            # Extract relevant data for each label-value pair within this div
             for item in div.find_all("div", class_="mb-srp__card__summary__list--item"):
                 # Convert both label and value to lowercase for matching
                 label = item.find("div", class_="mb-srp__card__summary--label").get_text(strip=True).lower()
                 value = item.find("div", class_="mb-srp__card__summary--value").get_text(strip=True)
 
-                # Match label to appropriate field (case insensitive)
+              
                 if label == "furnishing":
                     property_data["Furnishing"] = value
                 elif label == "bathroom":
@@ -111,7 +108,7 @@ with open("properties_info.csv", "w", newline="", encoding="utf-8") as csvfile:
                 except json.JSONDecodeError:
                     continue  # If there's an issue with the JSON parsing, just skip
 
-            # Write the extracted data to the CSV file
+           
             writer.writerow(property_data)
 
 print("Data extraction complete. Results saved in 'properties_info.csv'.")
