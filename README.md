@@ -249,6 +249,31 @@ Chennai
 ## Conclusion  
 Machine learning models were developed to predict rental prices, aiding tenants and landlords. Future improvements include real-time data updates and enhanced predictive features.
 
+## Declaration of Work
+
+Nilay
+- Scraping, cleaning, and encoding code
+- Linear Regression
+- KNN
+- Readme
+    
+Vasco
+- Scraping, cleaning, and encoding code.
+- KNN
+- Decision Tree
+- Time Series
+- Readme
+  
+Mariia
+- Scraping, cleaning, and encoding code.
+- Time Series
+- Readme
+  
+Sindhuj
+- Scraping, cleaning, and encoding code.
+- Linear Regression
+- Readme
+  
 ## Appendix
 
 0. Please ensure you have these versions, as other versions (particularly those from sklearn) may produce different results from ours.
